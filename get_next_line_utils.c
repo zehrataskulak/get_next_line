@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ztaskula <ztaskula@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:44:19 by zzehra            #+#    #+#             */
-/*   Updated: 2025/07/23 19:39:21 by ztaskula         ###   ########.fr       */
+/*   Updated: 2025/07/24 00:17:44 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ char	*substr(const char *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start >= (unsigned int)strlen(s))
-		return (strdup(""));
+		return (NULL);
+		//return (strdup(""));
 	substr = malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
@@ -114,7 +115,7 @@ char	*substr(const char *s, unsigned int start, size_t len)
 }
 
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <fcntl.h>
 
 int main()
@@ -147,4 +148,4 @@ int main()
 
 
 	
-}
+}*/

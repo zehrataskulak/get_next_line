@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ztaskula <ztaskula@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:44:19 by zzehra            #+#    #+#             */
-/*   Updated: 2025/07/22 23:06:19 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/07/23 19:39:21 by ztaskula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char	*strjoin(char const *s1, char const *s2)
 	char	*arr;
 
 	i = 0;
+	/*if (!s2)
+		return (strdup(s1));*/
 	finallen = strlen(s1) + strlen(s2);
 	arr = malloc(finallen + 1);
 	if (arr == NULL)
@@ -89,22 +91,26 @@ char	*strdup(const char *s)
 }
 
 
-char *read_file(int fd)
+char	*substr(const char *s, unsigned int start, size_t len)
 {
-    char *buff_tmp;
-    int bytes;
-    
-    buff_tmp = malloc(BUFFER_SIZE + 1);
-    if(!buff_tmp)
-        return (NULL);
-    bytes = read(fd, buff_tmp, BUFFER_SIZE);
-    if(bytes < 0)
-    {
-        free (buff_tmp);
-        return (NULL);
-    }
-    buff_tmp[bytes] = '\0';
-    return (buff_tmp);
+	char	*substr;
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (start >= (unsigned int)strlen(s))
+		return (strdup(""));
+	substr = malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	while (i < len && s[start + i])
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
 }
 
 
@@ -119,22 +125,26 @@ int main()
     char *c;
     
     c = get_next_line(fd);
-    printf("%s\n", c);
+    printf("%s", c);
     
-    /*c = get_next_line(fd);
-    printf("%s\n", c);
     c = get_next_line(fd);
-    printf("%s\n", c);
+    printf("%s", c);
     c = get_next_line(fd);
-    printf("%s\n", c);
+    printf("%s", c);
     c = get_next_line(fd);
-    printf("%s\n", c);
+    printf("%s", c);
     c = get_next_line(fd);
-    printf("%s\n", c);
+    printf("%s", c);
     c = get_next_line(fd);
-    printf("%s\n", c);
+    printf("%s", c);
     c = get_next_line(fd);
-    printf("%s\n", c);*/
-   
-    
+    printf("%s", c);
+    c = get_next_line(fd);
+    printf("%s", c);
+	c = get_next_line(fd);
+    printf("%s", c);
+
+
+
+	
 }

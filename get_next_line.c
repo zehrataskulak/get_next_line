@@ -6,7 +6,7 @@
 /*   By: ztaskula <ztaskula@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:44:22 by zzehra            #+#    #+#             */
-/*   Updated: 2025/07/24 16:03:31 by ztaskula         ###   ########.fr       */
+/*   Updated: 2025/07/24 16:43:01 by ztaskula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static char	*get_rest_result(char **result, char **rest)
 		*rest = NULL;
 		return (NULL);
 	}
-	*result = *rest;
+    *result = ft_strdup(*rest);
+    free(*rest);
 	*rest = NULL;
 	return (*result);
 }

@@ -40,9 +40,6 @@ int main()
     printf("\n");*/
 
 
-   
-
-	
 
     /*char **line;
     line = malloc(sizeof(char * ) * 5);

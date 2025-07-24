@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ztaskula <ztaskula@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:44:22 by zzehra            #+#    #+#             */
-/*   Updated: 2025/07/24 01:19:23 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/07/24 15:25:17 by ztaskula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *read_file(int fd)
+static char *read_file(int fd)
 {
     char *buff_tmp;
     int bytes;
@@ -30,7 +30,7 @@ char *read_file(int fd)
     return (buff_tmp);
 }
 
-int find_newline(char *rest)
+static int find_newline(char *rest)
 {
     int i;
 
@@ -40,6 +40,20 @@ int find_newline(char *rest)
     i++;
     return (i);
 }
+
+static char *get_rest_result(char **result, char **rest)
+{
+    if (**rest == '\0')
+    {
+        free(*rest);
+        *rest = NULL;
+        return NULL;
+    }
+    *result = *rest;
+    *rest = NULL;
+    return (*result);
+}
+
 
 char *get_next_line(int fd)
 {
@@ -56,17 +70,7 @@ char *get_next_line(int fd)
     {
         newrest = read_file(fd);
         if(!newrest)
-        {
-            if (*rest == '\0')
-            {
-                free(rest);
-                rest = NULL;
-                return NULL;
-            }
-            result = rest;
-            rest = NULL;
-            return (result);
-        }
+            return(get_rest_result(&result, &rest));
         tmp = strjoin(rest, newrest);
         free(newrest);
         free(rest);

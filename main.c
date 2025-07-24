@@ -40,19 +40,8 @@ int main()
     printf("\n");*/
 
 
-    /*int fd = open("mmm.txt", O_CREAT | O_RDWR, 0777);
-    //int total = find_total(fd);
-    //printf("%d\n", total);
-    char *c;
-    
-    c = get_next_line(fd);
-    printf("%s", c);
-    
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);*/
+   
+
 	
 
     /*char **line;

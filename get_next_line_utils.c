@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ztaskula <ztaskula@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:44:19 by zzehra            #+#    #+#             */
-/*   Updated: 2025/07/24 00:17:44 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/07/24 15:52:37 by ztaskula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
@@ -22,14 +22,14 @@ size_t	strlen(const char *str)
 	return (len);
 }
 
-char	*strchr(const char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	int				i;
 	int				len;
 	unsigned char	uc;
 
 	uc = (unsigned char)c;
-	len = (int)strlen(str);
+	len = (int)ft_strlen(str);
 	i = 0;
 	while (i < len + 1)
 	{
@@ -40,16 +40,14 @@ char	*strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		finallen;
 	int		i;
 	char	*arr;
 
 	i = 0;
-	/*if (!s2)
-		return (strdup(s1));*/
-	finallen = strlen(s1) + strlen(s2);
+	finallen = ft_strlen(s1) + ft_strlen(s2);
 	arr = malloc(finallen + 1);
 	if (arr == NULL)
 		return (NULL);
@@ -67,8 +65,7 @@ char	*strjoin(char const *s1, char const *s2)
 	return (arr);
 }
 
-
-char	*strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	int		size;
 	int		i;
@@ -90,8 +87,7 @@ char	*strdup(const char *s)
 	return (p);
 }
 
-
-char	*substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	i;
@@ -99,9 +95,8 @@ char	*substr(const char *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (start >= (unsigned int)strlen(s))
+	if (start >= (unsigned int)ft_strlen(s))
 		return (NULL);
-		//return (strdup(""));
 	substr = malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
@@ -113,39 +108,3 @@ char	*substr(const char *s, unsigned int start, size_t len)
 	substr[i] = '\0';
 	return (substr);
 }
-
-
-/*#include <stdio.h>
-#include <fcntl.h>
-
-int main()
-{
-    int fd = open("zzzz.txt", O_CREAT | O_RDWR, 0777);
-    //int total = find_total(fd);
-    //printf("%d\n", total);
-    char *c;
-    
-    c = get_next_line(fd);
-    printf("%s", c);
-    
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-    c = get_next_line(fd);
-    printf("%s", c);
-	c = get_next_line(fd);
-    printf("%s", c);
-
-
-
-	
-}*/

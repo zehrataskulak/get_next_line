@@ -6,7 +6,7 @@
 /*   By: ztaskula <ztaskula@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:44:22 by zzehra            #+#    #+#             */
-/*   Updated: 2025/07/24 16:43:01 by ztaskula         ###   ########.fr       */
+/*   Updated: 2025/07/25 17:21:38 by ztaskula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,8 @@ static int	find_newl(char *rest)
 
 static char	*get_rest_result(char **result, char **rest)
 {
-	if (**rest == '\0')
-	{
-		free(*rest);
-		*rest = NULL;
-		return (NULL);
-	}
-    *result = ft_strdup(*rest);
-    free(*rest);
+	*result = ft_strdup(*rest);
+	free(*rest);
 	*rest = NULL;
 	return (*result);
 }
